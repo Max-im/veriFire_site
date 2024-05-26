@@ -1,28 +1,33 @@
-export const getPrices = () => {
-    return [
-        {
-          title: 'Basic',
-          description:
-            'Verify up to 100 email addresses per month. Perfect for small lists, students, or hobbyists.',
-          price: 'Free',
-          salesPrice: null,
-          credits: 100,
-        },
-        {
-          title: 'Standard',
-          description:
-            'Verify up to 500 email addresses per month. Ideal for small businesses, entrepreneurs, or marketers.',
-          price: '12.99',
-          salesPrice: '9.99',
-          credits: 500,
-        },
-        {
-          title: 'Premium',
-          description:
-            'Verify up to 2000 email addresses per month. Suitable for large businesses, agencies, or organizations.',
-          price: '29.99',
-          salesPrice: '24.99',
-          credits: 2000,
-        },
-      ];
+import axios from 'axios';
+import { IPrice } from '@/types';
+
+
+class Price implements IPrice{
+  id: string;
+  title: string;
+  description: string;
+  price: string;
+  credits: string;
+  salesPrice?: string;
+  constructor(priceItem: any) {
+    this.id = priceItem.id;
+    this.title = priceItem.properties.name;
+    this.description = priceItem.properties.description;
+    this.price = priceItem.properties.price;
+    this.credits = priceItem.properties.credits;
+    this.salesPrice = priceItem.properties.sales_price;
+  }
+}
+
+export const getPrices = async () => {
+    const api = axios.create({ baseURL: 'https://api.hubapi.com/crm/v3/objects' });
+    api.defaults.headers.common['Authorization'] = `Bearer ${process.env.HUB_SPOT_KEY}`;
+
+    const params = ['id', 'credits', 'price', 'name', 'description'];
+
+    const payload = await api.get(`/products?properties=${params.join(',')}`).then(({ data }) => data.results);
+    const prices = payload.map((priceItem: any) => new Price(priceItem));
+
+
+    return prices;
 } 
