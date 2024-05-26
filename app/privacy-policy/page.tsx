@@ -1,4 +1,10 @@
-import Image from "next/image";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy - VeryFire',
+  description:
+    'This privacy policy explains how VeryFire collects, uses, and protects the data of users of our Google Sheets addon. We do not sell, trade, or rent personal information to others. If you have any questions or concerns, please contact us.',
+};
 
 export default function PrivacyPolicy() {
   return (

@@ -1,4 +1,10 @@
-import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Terms and Conditions - VeryFire',
+  description:
+    'These terms and conditions outline the rules and regulations for the use of the VeryFire email verification addon. By using the addon, you agree to be bound by these terms. If you do not agree with any part of these terms, you may not use the addon. These terms are subject to change at any time, without notice.',
+};
 
 export default function TermsAndConditions() {
   return (

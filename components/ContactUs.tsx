@@ -3,7 +3,7 @@ import React from 'react'
 export default function ContactUs() {
   return (
 
-    <div id="contact-us" className="bg-gray-100 h-screen">
+    <div id="contact-us" className="bg-gray-100 h-screen w-full">
       <div className="container mx-auto p-4 flex flex-col items-center justify-center">
         <h2 className="text-2xl font-bold mb-4 text-left">Contact Us</h2>
         <form className="flex flex-col w-full max-w-md md:max-w-screen-lg lg:max-w-screen-xl xl:max-w-screen-2xl" action="/contact-us" method="POST">

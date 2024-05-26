@@ -1,4 +1,10 @@
-import React from 'react'
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Responses - VeryFire',
+  description:
+    'VeryFire provides instant email verification results, including valid, invalid, disposable and catch-all email addresses. This page shows the results of email verification requests. If you have any questions or concerns about how we process email addresses, please check our privacy policy and terms and conditions.',
+};
 
 export default function Responses() {
   return (
