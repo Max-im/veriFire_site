@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --primary: black;
+  --danger: red;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--color-background);
+}
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 6xl;
+  margin-bottom: 4rem;
+}
+
+.hero h2 {
+  font-size: 3xl;
+  margin-bottom: 4rem;
+}
+
+.hero p {
+  max-width: 40rem;
+  margin-bottom: 4rem;
+}
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+
+
+.animate-fade-in {
+  animation: fade-in 1s ease-in forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-delay-1500 {
+  animation-delay: 1.5s;
+}
+
+.animate-fade-in-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animate-fade-in-delay-2500 {
+  animation-delay: 2.5s;
+}
+
+.animate-fade-in-delay-3000 {
+  animation-delay: 3s;
+}
+
+.animate-fade-in-delay-3500 {
+  animation-delay: 3.5s;
+}
+
+.animate-fade-in-delay-4000 {
+  animation-delay: 4s;
+}
