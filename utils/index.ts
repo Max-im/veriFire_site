@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { IPrice } from '@/types';
+import { IEmailData, IPrice } from '@/types';
 
-
-class Price implements IPrice{
+class Price implements IPrice {
   id: string;
   title: string;
   description: string;
@@ -20,14 +19,31 @@ class Price implements IPrice{
 }
 
 export const getPrices = async () => {
-    const api = axios.create({ baseURL: 'https://api.hubapi.com/crm/v3/objects' });
-    api.defaults.headers.common['Authorization'] = `Bearer ${process.env.HUB_SPOT_KEY}`;
+  const api = axios.create({ baseURL: 'https://api.hubapi.com/crm/v3/objects' });
+  api.defaults.headers.common['Authorization'] = `Bearer ${process.env.HUB_SPOT_KEY}`;
 
-    const params = ['id', 'credits', 'price', 'name', 'description'];
+  const params = ['id', 'credits', 'price', 'name', 'description'];
 
-    const payload = await api.get(`/products?properties=${params.join(',')}`).then(({ data }) => data.results);
-    const prices = payload.map((priceItem: any) => new Price(priceItem));
+  const payload = await api.get(`/products?properties=${params.join(',')}`).then(({ data }) => data.results);
+  const prices = payload.map((priceItem: any) => new Price(priceItem));
 
 
-    return prices;
-} 
+  return prices;
+}
+
+export const onContactUs = async (emailData: IEmailData) => {
+  const {email, message, subject} = emailData;
+  const contactUsId = '2-122250900';
+  const HUBSPOT_OWNER_ID = 1759861217
+  const api = axios.create({ baseURL: 'https://api.hubapi.com/crm/v3/objects' });
+  api.defaults.headers.common['Authorization'] = `Bearer ${process.env.HUB_SPOT_KEY}`;
+
+  const properties = {
+    message: `${subject}:\n\n${message}`,
+    customer_id: email,
+    hubspot_owner_id: HUBSPOT_OWNER_ID
+  };
+
+  const toCreateObject = { associations: [], properties };
+  await api.post('/' + contactUsId, toCreateObject).then(({ data }) => data).catch(err => console.log(err))
+}

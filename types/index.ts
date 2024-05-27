@@ -6,3 +6,9 @@ export interface IPrice {
     credits: string;
     salesPrice?: string;
 }
+
+export interface IEmailData {
+    message: string;
+    subject: string;
+    email: string;
+}
