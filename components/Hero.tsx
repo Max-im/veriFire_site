@@ -1,6 +1,6 @@
 "use client"
 
-import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect, useRef } from 'react'
 
 export default function Hero() {
@@ -27,13 +27,26 @@ export default function Hero() {
           <h2 className="text-3xl font-bold text-gray-900 md:text-5xl md:px-16 md:py-12">
             Validate email addresses in seconds.
           </h2>
-          <Link href="/prices" className="mt-8 md:mt-0 inline-block">
-            <span
-              className="px-6 py-3 rounded-md shadow-lg text-gray-900 bg-gray-200 hover:bg-gray-300 focus:outline-none md:px-16 md:py-4"
+          <a
+            href="/"
+            className="mt-8 md:mt-0 inline-block"
+            target="_blank"
+          >
+            <button
+              type="button"
+              className="flex items-center justify-center px-4 py-2 rounded-md shadow-lg text-gray-900 bg-gray-200 hover:bg-gray-300 focus:outline-none md:px-12 md:py-4"
             >
               Get Started
-            </span>
-          </Link>
+              <Image
+                src="/logo.png"
+                alt="logo"
+                width="30"
+                height="30"
+                className="h-10 w-auto ml-4"
+              />
+            </button>
+          </a>
+          
         </div>
       </div>
     </header>
