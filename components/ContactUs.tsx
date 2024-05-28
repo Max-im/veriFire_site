@@ -18,8 +18,8 @@ export default function ContactUs() {
   }
 
   return (
-    <div id="contact-us" className="bg-gray-100 h-screen w-full">
-      <div className="container mx-auto p-4 flex flex-col items-center justify-center">
+    <div id="contact-us" className="bg-gray-100 pb-12 pt-12 w-full">
+      <div className="container mx-auto p-4 flex flex-col items-center justify-center max-w-screen-md">
         <h2 className="text-2xl font-bold mb-4 text-left">Contact Us</h2>
         <form onSubmit={onSend} className="flex flex-col w-full max-w-md md:max-w-screen-lg lg:max-w-screen-xl xl:max-w-screen-2xl" action="/contact-us" method="POST">
           <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
