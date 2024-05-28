@@ -1,15 +1,16 @@
 "use client"
 
+import axios from 'axios';
 import { IEmailData } from "@/types";
-import { onContactUs } from "@/utils";
 import { useState } from "react";
 
 export default function ContactUs() {
   const [emailData, setEmailData] = useState<IEmailData>({email: '', message: '', subject: ''});
 
-  const onSend = async (e: React.FormEvent) => {
+  const onSend = (e: React.FormEvent) => {
     e.preventDefault();
-    await onContactUs(emailData)
+    axios.post("/api/contactus", emailData)
+    .then(() => setEmailData({email: '', message: '', subject: ''}));
   }
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
